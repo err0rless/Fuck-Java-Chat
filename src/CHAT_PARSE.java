@@ -19,7 +19,7 @@ public class CHAT_PARSE
     private String emoticon[] = {"XD", ":)", ":(",
                                  ":/", ":<", ":>"};
 
-    CHAT_PARSE(){} // constructor
+    CHAT_PARSE(){}; // constructor
 
     public String Parse_string(String str)
     {
