@@ -38,7 +38,7 @@ public class CHAT_PARSE
         }
     }
 
-    public String Parse_Emoticon(String str)
+    private String Parse_Emoticon(String str)
     {
         Pattern p = Pattern.compile("\\([A-z]+\\)"); // "(emoticon)"
         Matcher m = p.matcher(str);
