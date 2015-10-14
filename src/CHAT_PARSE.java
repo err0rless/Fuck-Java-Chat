@@ -16,6 +16,7 @@ public class CHAT_PARSE
 {
     private String keywords[] = {"(lol)", "(good)", "(bad)",
                                  "(what)", "(notgood)", "(prettygood)"};
+    
     private String emoticon[] = {"XD", ":)", ":(",
                                  ":/", ":<", ":>"};
 

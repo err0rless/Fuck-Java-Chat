@@ -11,7 +11,9 @@ public class Test_Main
         CHAT_PARSE chatParse = new CHAT_PARSE();
         String chat = "This is not good (notgood), what is it?! (what)";
 
-        chat = chatParse.Parse_string(chat);
-        System.out.println(chat);
+        //chat = chatParse.Parse_string(chat);
+        //System.out.println(chat);
+
+        GUI gui = new GUI(chat);
     }
 }
