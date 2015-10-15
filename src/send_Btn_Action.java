@@ -14,16 +14,19 @@ import java.awt.event.ActionListener;
 
 public class send_Btn_Action implements ActionListener
 {
-    private JFrame frame = new JFrame();
-    private JPanel Panel = new JPanel();
-    private JTextField textField = new JTextField();
+    private JFrame frame;
+    private JPanel Panel;
+    private JTextField textField;
+    private Container ctn;
 
     // Constructor
-    send_Btn_Action(JFrame actionFrame, JPanel cPanel, JTextField txt)
+    send_Btn_Action(JFrame actionFrame, JPanel cPanel,
+                    JTextField txt, Container c)
     {
         frame = actionFrame;
         Panel = cPanel;
         textField = txt;
+        ctn = c;
     }
 
     @Override
@@ -36,8 +39,6 @@ public class send_Btn_Action implements ActionListener
         CHAT_PARSE chatParse = new CHAT_PARSE();
         text = chatParse.Parse_string(text);
 
-
-        JOptionPane.showMessageDialog(frame, text);
         textField.setText("");
     }
 }
