@@ -10,13 +10,14 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class GUI extends JFrame
 {
     private String chat;
     private JFrame mainFrame = new JFrame("Fuck-Java-Chat");
-    private JPanel sidePanel = new JPanel();
     private JPanel chatPanel = new JPanel();
+    private JPanel sidePanel = new JPanel();
     private JPanel textPanel = new JPanel();
 
     // Constructor
@@ -57,46 +58,44 @@ public class GUI extends JFrame
         Container ctn = mainFrame.getContentPane();
 
         GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
 
+        // set size
         mainFrame.setSize(800, 550);
-        mainFrame.setResizable(false); // no maximize button
+        chatPanel.setPreferredSize(new Dimension(440, 470));
+        textPanel.setPreferredSize(new Dimension(440, 50));
+        txt.setPreferredSize(new Dimension(520, 40));
+        sendBtn.setPreferredSize(new Dimension(70, 40));
+
+        txt.addActionListener(new send_Btn_Action(mainFrame, chatPanel, txt, ctn));
+        //sendBtn.addActionListener(new send_Btn_Action(mainFrame, chatPanel, txt, ctn));
 
         // set background color
         sidePanel.setBackground(new Color(0xff-40, 0xff-40, 0xff-40));
         chatPanel.setBackground(new Color(0xff, 0xff, 0xff));
         textPanel.setBackground(new Color(0xff-30, 0xff-30, 0xff-30));
 
-        // set preferred size
-        chatPanel.setPreferredSize(new Dimension(440, 470));
-        textPanel.setPreferredSize(new Dimension(440, 50));
-        txt.setPreferredSize(new Dimension(520, 40));
-        sendBtn.setPreferredSize(new Dimension(70, 40));
-
         // set font
-        txt.setFont(new Font("Consolas", Font.BOLD, 13));
+        txt.setFont(new Font("Consolas", Font.BOLD, 14));
 
         // set layout
         ctn.setLayout(new GridBagLayout());
-        chatPanel.setLayout(new GridLayout());
+        chatPanel.setLayout(new FlowLayout());
+
+        // HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER SCROOOOOOOOOOOOOOOOOOOOOOOL
 
         // add
-        c.fill = GridBagConstraints.BOTH;
         addGridBagLayout(ctn, c, sidePanel, 0, 0, 1, 2, 1, 1);
         addGridBagLayout(ctn, c, chatPanel, 1, 0, 1, 1, 1, 1);
         addGridBagLayout(ctn, c, textPanel, 1, 1, 1, 1, 1, 1);
-
-        c.fill = GridBagConstraints.WEST;
-        addGridBagLayout(textPanel, c, txt,     0, 0, 2, 2, 2, 2);
-        c.fill = GridBagConstraints.WEST;
-        addGridBagLayout(textPanel, c, sendBtn, 0, 0, 1, 1, 2, 2);
-
-        txt.addActionListener(new send_Btn_Action(mainFrame, chatPanel, txt, ctn));
-        sendBtn.addActionListener(new send_Btn_Action(mainFrame, chatPanel, txt, ctn));
+        addGridBagLayout(textPanel, c, txt,     0, 0, 1, 1, 1, 1);
+        addGridBagLayout(textPanel, c, sendBtn, 0, 0, 1, 1, 1, 1);
 
        // chatPanel.add(new JButton("hi"), ctn);
 
         // settings
-        mainFrame.setVisible(true);
+        mainFrame.setResizable(false); // no maximize button
+        mainFrame.setVisible(true);    // Visible
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

@@ -32,6 +32,8 @@ public class send_Btn_Action implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
+        JPanel linePanel = new JPanel();
+        JLabel chatLab   = new JLabel();
         String text = textField.getText();
 
         if (text.equals("")) return ;
@@ -39,6 +41,17 @@ public class send_Btn_Action implements ActionListener
         CHAT_PARSE chatParse = new CHAT_PARSE();
         text = chatParse.Parse_string(text);
 
+        chatLab.setText(text);
+        linePanel.add(chatLab);
+
+        linePanel.setPreferredSize(new Dimension(600, 50));
+
+        Panel.add(linePanel);
+
+        JScrollPane scroll = new JScrollPane(Panel);
+        frame.add(scroll);
+
         textField.setText("");
+        frame.setVisible(true);
     }
 }
