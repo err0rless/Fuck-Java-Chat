@@ -48,8 +48,8 @@ public class send_Btn_Action implements ActionListener
 
         Panel.add(linePanel);
 
-        JScrollPane scroll = new JScrollPane(Panel);
-        frame.add(scroll);
+        //JScrollPane scroll = new JScrollPane(Panel);
+        //frame.add(scroll);
 
         textField.setText("");
         frame.setVisible(true);

@@ -56,7 +56,7 @@ public class CHAT_PARSE
         {
             for (int j = 0; j < keywords.length; j++)
             {
-                if (e[i].equals(keywords[j]))
+                if (e[i].equalsIgnoreCase(keywords[j]))
                 {
                     t = emoticon[j];
                     emot = true;
