@@ -14,42 +14,54 @@ import java.awt.event.ActionEvent;
 
 public class GUI extends JFrame
 {
+    // Get nickname GUI
+    private JFrame nickFrame = new JFrame("Input Your Nickname");
+    private JPanel nickPanel = new JPanel();
+
+    // Chatting GUI
     private JFrame mainFrame = new JFrame("Fuck-Java-Chat");
     private JPanel chatPanel = new JPanel();
     private JPanel sidePanel = new JPanel();
     private JPanel textPanel = new JPanel();
 
     // Constructor
-    GUI() { GUI_init(); }
+    GUI() { GET_NICKNAME_init(); /*CHATTING_GUI_init();*/ }
 
-    private void addGridBagLayout(JPanel p, GridBagConstraints c,
-                                  Component o, int x, int y, int w, int h,
-                                  double wx, double wy)
+    // get nickname gui
+    private void GET_NICKNAME_init()
     {
-        c.gridx = x;
-        c.gridy = y;
-        c.gridwidth = w;
-        c.gridheight = h;
-        c.weightx = wx;
-        c.weighty = wy;
-        p.add(o, c);
+        JTextField nickTxt = new JTextField();
+        JButton nickBtn = new JButton("send");
+        JLabel nickLabel = new JLabel("INPUT YOUR NICKNAME");
+
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+
+        nickLabel.setFont(new Font("consolas", Font.BOLD, 14));
+
+        nickPanel.setLayout(new GridBagLayout());
+
+        nickTxt.setPreferredSize(new Dimension(200, 40));
+        nickBtn.setPreferredSize(new Dimension(80, 40));
+        nickLabel.setPreferredSize(new Dimension(200, 40));
+
+        nickLabel.setHorizontalAlignment(0);
+
+        nickPanel.setBackground(Color.white);
+
+        nickFrame.setSize(400, 300);
+
+        addGridBagLayout(nickPanel, c, nickLabel, 0, 0, 2, 1, 1, 1);
+        addGridBagLayout(nickPanel, c, nickTxt, 0, 1, 1, 1, 1, 1);
+        addGridBagLayout(nickPanel, c, nickBtn, 1, 1, 1, 1, 1, 1);
+        nickFrame.add(nickPanel);
+
+        nickFrame.setResizable(false); // no maximize button
+        nickFrame.setVisible(true);    // Visible
     }
 
-    private void addGridBagLayout(Container p, GridBagConstraints c,
-                                  Component o, int x, int y, int w, int h,
-                                  double wx, double wy)
-    {
-        c.gridx = x;
-        c.gridy = y;
-        c.gridwidth = w;
-        c.gridheight = h;
-        c.weightx = wx;
-        c.weighty = wy;
-        p.add(o, c);
-    }
-
-    // init GUI
-    private void GUI_init()
+    // chatting gui
+    private void CHATTING_GUI_init()
     {
         JButton sendBtn = new JButton("send");
 
@@ -81,11 +93,6 @@ public class GUI extends JFrame
         ctn.setLayout(new GridBagLayout());
         chatPanel.setLayout(new FlowLayout());
 
-        // set scroll
-        JScrollPane sc = new JScrollPane(chatPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS
-                                    ,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        mainFrame.add(sc);
-
         // add
         addGridBagLayout(ctn, c, sidePanel, 0, 0, 1, 2, 1, 1);
         addGridBagLayout(ctn, c, chatPanel, 1, 0, 1, 1, 1, 1);
@@ -99,5 +106,31 @@ public class GUI extends JFrame
         mainFrame.setResizable(false); // no maximize button
         mainFrame.setVisible(true);    // Visible
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    private void addGridBagLayout(JPanel p, GridBagConstraints c,
+                                  Component o, int x, int y, int w, int h,
+                                  double wx, double wy)
+    {
+        c.gridx = x;
+        c.gridy = y;
+        c.gridwidth = w;
+        c.gridheight = h;
+        c.weightx = wx;
+        c.weighty = wy;
+        p.add(o, c);
+    }
+
+    private void addGridBagLayout(Container p, GridBagConstraints c,
+                                  Component o, int x, int y, int w, int h,
+                                  double wx, double wy)
+    {
+        c.gridx = x;
+        c.gridy = y;
+        c.gridwidth = w;
+        c.gridheight = h;
+        c.weightx = wx;
+        c.weighty = wy;
+        p.add(o, c);
     }
 }
