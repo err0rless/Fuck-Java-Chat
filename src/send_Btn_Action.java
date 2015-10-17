@@ -42,6 +42,7 @@ public class send_Btn_Action implements ActionListener
         text = chatParse.Parse_string(text);
 
         chatLab.setText(text);
+        chatLab.setFont(new Font("Consolas", Font.PLAIN, 14));
         linePanel.add(chatLab);
 
         linePanel.setPreferredSize(new Dimension(600, 50));
@@ -49,7 +50,7 @@ public class send_Btn_Action implements ActionListener
         Panel.add(linePanel);
 
         //JScrollPane scroll = new JScrollPane(Panel);
-        //frame.add(scroll);
+        //ctn.add(scroll);
 
         textField.setText("");
         frame.setVisible(true);

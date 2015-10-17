@@ -14,7 +14,6 @@ import java.awt.event.ActionEvent;
 
 public class GUI extends JFrame
 {
-    private String chat;
     private JFrame mainFrame = new JFrame("Fuck-Java-Chat");
     private JPanel chatPanel = new JPanel();
     private JPanel sidePanel = new JPanel();
@@ -82,7 +81,10 @@ public class GUI extends JFrame
         ctn.setLayout(new GridBagLayout());
         chatPanel.setLayout(new FlowLayout());
 
-        // HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER SCROOOOOOOOOOOOOOOOOOOOOOOL
+        // set scroll
+        JScrollPane sc = new JScrollPane(chatPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS
+                                    ,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        mainFrame.add(sc);
 
         // add
         addGridBagLayout(ctn, c, sidePanel, 0, 0, 1, 2, 1, 1);
