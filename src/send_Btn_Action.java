@@ -2,9 +2,9 @@
  * Created by err0rless on 2015-10-14.
  * github.com/err0rless/Fuck-Java-Chat
  *
- * process actions
- *  .button clicks
- *  .press enter key
+ * Action Processor - send_Btn_Action.java
+ *  process Send Button in CHATTING_GUI_init
+ *  get text and create chatting-box
  */
 
 import javax.swing.*;
@@ -48,9 +48,6 @@ public class send_Btn_Action implements ActionListener
         linePanel.setPreferredSize(new Dimension(600, 50));
 
         Panel.add(linePanel);
-
-        //JScrollPane scroll = new JScrollPane(Panel);
-        //ctn.add(scroll);
 
         textField.setText("");
         frame.setVisible(true);

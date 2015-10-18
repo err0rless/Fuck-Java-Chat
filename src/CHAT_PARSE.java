@@ -2,12 +2,11 @@
  * Created by err0rless on 2015-10-13.
  * github.com/err0rless/Fuck-Java-Chat
  *
- * Class For Parsing
- *   .emoticons
- *   .images or files
- *   .string
- *
- * 1.0: process emoticon
+ * Parser
+ *  .emoticons
+ *  .images or files
+ *  .e-mails
+ *  .string
  */
 
 import java.util.regex.*;
@@ -20,7 +19,7 @@ public class CHAT_PARSE
     private String emoticon[] = {"XD", ":)", ":(",
                                  ":/", ":<", ":>"};
 
-    CHAT_PARSE(){}; // constructor
+    CHAT_PARSE(){}
 
     public String Parse_string(String str)
     {

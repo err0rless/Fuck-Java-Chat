@@ -1,7 +1,7 @@
 /**
  * Created by err0rless on 2015-10-13.
  *
- * Main class for testing
+ * Main
  */
 
 public class Test_Main
