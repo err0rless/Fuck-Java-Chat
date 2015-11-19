@@ -18,15 +18,17 @@ public class send_Btn_Action implements ActionListener
     private JPanel Panel;
     private JTextField textField;
     private Container ctn;
+    private String nick;
 
     // Constructor
     send_Btn_Action(JFrame actionFrame, JPanel cPanel,
-                    JTextField txt, Container c)
+                    JTextField txt, Container c, String Nickname)
     {
         frame = actionFrame;
         Panel = cPanel;
         textField = txt;
         ctn = c;
+        nick = Nickname;
     }
 
     @Override
@@ -41,13 +43,18 @@ public class send_Btn_Action implements ActionListener
         CHAT_PARSE chatParse = new CHAT_PARSE();
         text = chatParse.Parse_string(text);
 
-        chatLab.setText(text);
+        chatLab.setText("<html>&nbsp&nbsp[<i>" + nick + "</i>] : " + text + "</html>");
+        chatLab.setHorizontalAlignment(SwingConstants.LEFT);
         chatLab.setFont(new Font("Consolas", Font.PLAIN, 14));
-        linePanel.add(chatLab);
+        //linePanel.add(chatLab);
 
-        linePanel.setPreferredSize(new Dimension(600, 50));
+        chatLab.setPreferredSize(new Dimension(600, 30));
+        chatLab.setBackground(Color.gray);
 
-        Panel.add(linePanel);
+        Panel.add(chatLab);
+
+        //JScrollPane scrollSingle = new JScrollPane(Panel);
+        //scrollSingle.setPreferredSize(new Dimension(600, 500));
 
         textField.setText("");
         frame.setVisible(true);

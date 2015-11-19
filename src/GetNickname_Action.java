@@ -17,7 +17,7 @@ public class GetNickname_Action implements ActionListener
     JTextField txt;
     JFrame frame;
 
-    GetNickname_Action(JTextField nickTxt, JFrame nickFrame)
+    GetNickname_Action(JTextField nickTxt, JFrame nickFrame, String n)
     {
         txt = nickTxt;
         frame = nickFrame;
@@ -26,7 +26,11 @@ public class GetNickname_Action implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        if (txt.getText().equals("")) return ;
+        if (txt.getText().equals("") || txt.getText().indexOf(" ") != -1 || txt.getText().length() > 10)
+        {
+            txt.setText("no gad and 0 < length < 10");
+            return ;
+        }
 
         new GUI(txt.getText());
         frame.setVisible(false);

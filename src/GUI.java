@@ -2,7 +2,7 @@
  * Created by err0rless on 2015-10-14.
  * github.com/err0rless/Fuck-Java-Chat
  *
- * Gui maker class
+ * Gui maker
  *  .get-nickname window
  *  .chatting window
  *  .exit confirm window
@@ -16,6 +16,7 @@ public class GUI extends JFrame
     // Get nickname GUI
     private JFrame nickFrame = new JFrame("Input Your Nickname");
     private JPanel nickPanel = new JPanel();
+    public  String nickn     = "";
 
     // Chatting GUI
     private JFrame mainFrame = new JFrame("Fuck-Java-Chat");
@@ -40,7 +41,7 @@ public class GUI extends JFrame
         c.fill = GridBagConstraints.BOTH;
 
         nickTxt.setFont(new Font("Consolas", Font.ITALIC, 18));
-        nickLabel.setFont(new Font("Consolas", Font.BOLD, 14));
+        nickLabel.setFont(new Font("Csonsolas", Font.BOLD, 14));
 
         nickPanel.setLayout(new GridBagLayout());
 
@@ -57,8 +58,8 @@ public class GUI extends JFrame
         addGridBagLayout(nickPanel, c, nickBtn, 0, 1, 2, 1, 1, 1);
         nickFrame.add(nickPanel);
 
-        nickTxt.addActionListener(new GetNickname_Action(nickTxt, nickFrame));
-        nickBtn.addActionListener(new GetNickname_Action(nickTxt, nickFrame));
+        nickTxt.addActionListener(new GetNickname_Action(nickTxt, nickFrame, nickn));
+        nickBtn.addActionListener(new GetNickname_Action(nickTxt, nickFrame, nickn));
 
         nickFrame.setSize(600, 160);
         nickFrame.setResizable(false); // no maximize button
@@ -81,18 +82,19 @@ public class GUI extends JFrame
         c.fill = GridBagConstraints.BOTH;
 
         // set size
-        mainFrame.setSize(800, 550);
-        nickLab.setPreferredSize(new Dimension(20, 150));
-        chatPanel.setPreferredSize(new Dimension(440, 470));
-        textPanel.setPreferredSize(new Dimension(440, 50));
-        txt.setPreferredSize(new Dimension(520, 40));
+        mainFrame.setSize(600, 500);
+        //nickLab.setPreferredSize(new Dimension(200, 150));
+        chatPanel.setPreferredSize(new Dimension(550, 370));
+        textPanel.setPreferredSize(new Dimension(550, 30));
+        //nickPan.setPreferredSize(new Dimension(290, 60));
+        txt.setPreferredSize(new Dimension(500, 40));
         sendBtn.setPreferredSize(new Dimension(70, 40));
 
-        txt.addActionListener(new send_Btn_Action(mainFrame, chatPanel, txt, ctn));
-        sendBtn.addActionListener(new send_Btn_Action(mainFrame, chatPanel, txt, ctn));
+        txt.addActionListener(new send_Btn_Action(mainFrame, chatPanel, txt, ctn, nickname));
+        sendBtn.addActionListener(new send_Btn_Action(mainFrame, chatPanel, txt, ctn, nickname));
 
         // set background color
-        sidePanel.setBackground(new Color(0xff-40, 0xff-40, 0xff-40));
+        //sidePanel.setBackground(new Color(0xff-40, 0xff-40, 0xff-40));
         chatPanel.setBackground(new Color(0xff, 0xff, 0xff));
         textPanel.setBackground(new Color(0xff-30, 0xff-30, 0xff-30));
 
@@ -102,20 +104,20 @@ public class GUI extends JFrame
         // set layout
         ctn.setLayout(new GridBagLayout());
         chatPanel.setLayout(new FlowLayout());
-        sidePanel.setLayout(new FlowLayout());
+        //sidePanel.setLayout(new FlowLayout());
 
         // add
-        nickLab.setText(nickname);
-        nickLab.setFont(new Font("Consolas", Font.ITALIC, 12));
-        nickLab.setBackground(new Color(0xff, 0x42, 0x32));
-        sidePanel.add(nickLab);
+        //nickLab.setText(nickname);
+        //nickLab.setFont(new Font("Consolas", Font.ITALIC, 16));
+        //nickLab.setBackground(new Color(0xff, 0x42, 0x32));
+        //nickPan.add(nickLab);
+        //sidePanel.add(nickLab);
 
-        addGridBagLayout(ctn, c, sidePanel, 0, 0, 1, 2, 1, 1);
+        //addGridBagLayout(ctn, c, sidePanel, 0, 0, 1, 2, 1, 1);
         addGridBagLayout(ctn, c, chatPanel, 1, 0, 1, 1, 1, 1);
         addGridBagLayout(ctn, c, textPanel, 1, 1, 1, 1, 1, 1);
         addGridBagLayout(textPanel, c, txt,     0, 0, 1, 1, 1, 1);
         addGridBagLayout(textPanel, c, sendBtn, 0, 0, 1, 1, 1, 1);
-
 
         // settings
         mainFrame.setResizable(false); // no maximize button
