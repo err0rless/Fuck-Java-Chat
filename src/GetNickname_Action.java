@@ -32,8 +32,9 @@ public class GetNickname_Action implements ActionListener
             return ;
         }
 
-        new GUI(txt.getText());
+        GUI gui = new GUI(txt.getText());
         frame.setVisible(false);
         frame.dispose();
+        gui.Connect();
     }
 }
